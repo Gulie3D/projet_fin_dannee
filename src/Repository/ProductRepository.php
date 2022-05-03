@@ -52,20 +52,20 @@ class ProductRepository extends ServiceEntityRepository
      */
     public function findWitchSearch(Search $search)
     {
-        $query = $this //requête qui permet d'appeler les tables product et category 
-            ->createQueryBuilder('p')
+        $query = $this //requête qui permet d'appeler les tables product (p) et category (c) 
+            ->createQueryBuilder('p') 
             ->select('c', 'p')
             ->join('p.categories', 'c');
 
-        if(!empty($search->categories)) //afficher les resultats en fonction de la recherche par categories
-        {
+        if(!empty($search->categories)) //si une recherche est lancé par l'utilisateur avec les checbox
+        { //chercher les resultats en fonction de la recherche par categories
             $query = $query
             ->andWhere('c.id IN (:categories)')
             ->setParameter('categories',$search->categories);
         }
 
-        if(!empty($search->string)) //afficher les resultats en fonction de la recherche dans l'input
-        {
+        if(!empty($search->string)) //si une recherche est lancé par l'utilisateur avec un mot entré dans la barre de recherche
+        { //chercher les resultats en fonction de la recherche dans l'input
             $query = $query
             ->andWhere('p.name LIKE :string')
             ->setParameter('string',"%{$search->string}%"); //permet de faire une recherche partiel 

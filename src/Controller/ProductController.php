@@ -22,17 +22,20 @@ class ProductController extends AbstractController
     }
 
     #[Route('/nos-produits', name: 'app_products')]
-    public function index(): Response
+    public function index(Request $request): Response
     {
         $products = $this->entityManager->getRepository(Product::class)->findAll(); //on récupère l'entité product avec toutes ces données 
 
         // $search = new Search();
         // $form = $this->createForm(SearchType::class, $search);
+        // $form->handleRequest($request);
         // if($form->isSubmitted() && $form->isValid())
         // {
-        //     $product = $this->entityManager->getRepository(Product::class)->findWitchSearch();
-
+        //     $product = $this->entityManager->getRepository(Product::class)->findWitchSearch($search);
         // }
+        // else{
+            //$products = $this->entityManager->getRepository(Product::class)->findAll();
+        //}
 
 
         return $this->render('product/index.html.twig', [
