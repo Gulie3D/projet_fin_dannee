@@ -68,14 +68,15 @@ class OrderController extends AbstractController
 
             // Enregistrer ma commande Order()
             $order = new Order();
-            $reference = $date->format('dmY').'-'.uniqid();
-            $order->setReference($reference);
+            // $reference = $date->format('dmY').'-'.uniqid();
+            // $order->setReference($reference);
             $order->setUser($this->getUser());
             $order->setCreatedAt($date);
             $order->setCarrierName($carriers->getName());
             $order->setCarrierPrice($carriers->getPrice());
             $order->setDelivery($delivery_content);
-            $order->setState(0);
+            // $order->setState(0);
+            $order->setIsPaid(0);
 
             $this->entityManager->persist($order);
 
@@ -85,8 +86,8 @@ class OrderController extends AbstractController
                 $orderDetails->setMyOrder($order);
                 $orderDetails->setProduct($product['product']->getName());
                 $orderDetails->setQuantity($product['quantity']);
-                $orderDetails->setPrice($product['product']->getPrice());
-                $orderDetails->setTotal($product['product']->getPrice() * $product['quantity']);
+                $orderDetails->setPrice($product['product']->getPrix());
+                $orderDetails->setTotal($product['product']->getPrix() * $product['quantity']);
                 $this->entityManager->persist($orderDetails);
             }
 
@@ -96,7 +97,7 @@ class OrderController extends AbstractController
                 'cart' => $cart->getFull(),
                 'carrier' => $carriers,
                 'delivery' => $delivery_content,
-                'reference' => $order->getReference()
+                //'reference' => $order->getReference()
             ]);
         }
 
