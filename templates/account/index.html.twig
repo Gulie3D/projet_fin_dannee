@@ -7,9 +7,13 @@
     <h5>Bienvenue {{ app.user.firstname }} sur votre compte. <br> C'est dans cette espace que vous pourrez gérer toutes vos informations personnelles.</h5>
     <hr>
     <div>
-        <a href="{{ path('app_account_password') }}">Modifier mon mot de passe</a> 
+        
+        - <a href="{{ path('app_account_password') }}">Modifier mon mot de passe</a> 
         <br>
-        <a href="{{ path('app_account_address') }}">Gérer mes adresses</a> 
+        - <a href="{{ path('app_account_address') }}">Gérer mes adresses</a> 
+        <br>
+        - <a href="{{ path('account_order') }}">Mes commandes</a>
+        
     </div>
     <hr>
     
