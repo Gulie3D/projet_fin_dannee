@@ -7,11 +7,20 @@
     <a href="{{ path('account_order') }}">Retour</a>
     <hr>
     <p>
+        <strong>Statut de la commande : </strong>
+        {% if order.state == 1  %}
+            <p>Paiement accepté</p>
+        {% elseif order.state == 2 %}
+            <p>En cours de préparation</p>
+        {% elseif order.state == 3 %}
+            <p>En cours de livraison</p>
+        {% endif %}
+        <br>
         <strong>Commande passée le :</strong> {{ order.createdAt|date('d/m/Y') }}
         <br>
         <strong>Référence de ma commande :</strong> <small>{{ order.reference }}</small>
         <br>
-        <strong>Transporteur choisi :</strong> {{ order.carrierName }}
+        <strong>Transporteur choisi :</strong> {{ order.carrierName }}        
     </p>
     <hr>
     <strong>Détails :</strong>

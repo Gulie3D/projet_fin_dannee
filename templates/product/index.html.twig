@@ -15,14 +15,9 @@
         <div class="row product-container">
             {% for product in products %}
 
-            <div class="col-md-4 product-container" style="margin-bottom: 150px;">
-                <div class="product-item text-center" style="margin-top: 15px;">
-                    <a href="{{ path('app_product', { 'slug' : product.slug }) }}"><img src="/uploads/{{ product.illustartion }}" class="img-fluid"  alt="{{ product.name }}"> </a>
-                    <h5 class="" style="text-transform: uppercase; font-size: 16px; margin-bottom: 1px;">{{ product.name }}</h5>
-                    <span class="product-subtitle" style="font-size: 14px; display: block; margin-bottom: 10px;">{{ product.subtitle }}</span>
-                    <span class="product-price" style="font-size: 15px; font-weight: bold;">{{ (product.prix / 100) | number_format(2) }} €</span>
+                <div class="col-md-4 product-container" style="margin-bottom: 150px;">
+                    {% include 'product/single_product.html.twig' %}>
                 </div>
-            </div>
 
             {% endfor %}
         </div>
