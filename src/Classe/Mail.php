@@ -12,7 +12,10 @@ class Mail
 
     public function send($to_email, $to_name, $subject, $content)
     {
-        $mj = new client($this->api_key, $this->api_key_secret,true,['version' => 'v3.1']);
+        // $MJ_APIKEY_PUBLIC = '38b5b42a41967540550d04f798a487a1';
+        // $MJ_APIKEY_PRIVATE = 'f45742461dac829435bc75bc7905d50e';
+        $mj = new Client($this->api_key, $this->api_key_secret,true,['version' => 'v3.1']);
+        //$mj = new Client(getenv('MJ_APIKEY_PUBLIC'), getenv('MJ_APIKEY_PRIVATE'),true,['version' => 'v3.1']);
         $body = [
             'Messages' => [
                 [
