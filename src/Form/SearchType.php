@@ -1,4 +1,5 @@
 <?php
+namespace App\Form;
 
 use App\Classe\Search;
 use App\Entity\Category;
@@ -19,7 +20,8 @@ class SearchType extends AbstractType
                 'label'     => false,  
                 'required'  => false,
                 'attr'      => [
-                    'placeholder' => 'Votre recherche ...'
+                    'placeholder' => 'Votre recherche ...',
+                    'class' => 'form-control-sm'
                 ]
             ])
             ->add('categories', EntityType::class, [ //permet de lié le resultat de recherche à l'entité category
@@ -27,7 +29,7 @@ class SearchType extends AbstractType
                 'required' => false,
                 'class' => Category::class,
                 'multiple' => true, //permet de selectionner plusieurs valeur
-                'expended' =>true, //vue en chexbox
+                'expanded' =>true, //vue en chexbox
             ]) 
             ->add('submit', SubmitType::class,[
                 'label' => 'Filtrer',

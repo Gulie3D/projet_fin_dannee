@@ -55,7 +55,7 @@ class ProductRepository extends ServiceEntityRepository
         $query = $this //requête qui permet d'appeler les tables product (p) et category (c) 
             ->createQueryBuilder('p') 
             ->select('c', 'p')
-            ->join('p.categories', 'c');
+            ->join('p.category', 'c');
 
         if(!empty($search->categories)) //si une recherche est lancé par l'utilisateur avec les checbox
         { //chercher les resultats en fonction de la recherche par categories

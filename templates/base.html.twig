@@ -83,7 +83,8 @@
         </ol>
         <div class="carousel-inner">
             {% for  key,header in headers %}
-                <div class="carousel-item {% if key == 0 %}active{% endif %}" style="background: url('/public/uploads/{{ header.illustration }}'); background-size:cover;">
+                <div class="carousel-item {% if key == 0 %}active{% endif %}">
+                    <img src="{{asset('/uploads/'~header.illustration)}}" alt="" class="d-block w-100">
                     <div class="container">
                         <div class="carousel-caption text-left">
                             <h1>{{ header.title }}</h1>
